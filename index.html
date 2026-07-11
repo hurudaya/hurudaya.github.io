@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jeff Doerr | Math, ML, and Making Things Work</title>
-<meta name="description" content="Math + CS researcher building computational tools for combinatorics, sports analytics, and education. Currently at KREA University.">
-<meta property="og:title" content="Jeff Doerr | jeffdoesmath">
-<meta property="og:description" content="Math + CS researcher building computational tools for combinatorics, sports analytics, and education.">
+<title>Jeff Narasimhan | Math, ML, and Making Things Work</title>
+<meta name="description" content="Math + CS researcher building computational tools for combinatorics, formal verification, and education. KREA University and CMI.">
+<meta property="og:title" content="Jeff Narasimhan | jeffdoesmath">
+<meta property="og:description" content="Math + CS researcher building computational tools for combinatorics, formal verification, and education.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hurudaya.github.io">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jeff Doerr | jeffdoesmath">
-<meta name="twitter:description" content="Math + CS researcher building computational tools for combinatorics, sports analytics, and education.">
+<meta name="twitter:title" content="Jeff Narasimhan | jeffdoesmath">
+<meta name="twitter:description" content="Math + CS researcher building computational tools for combinatorics, formal verification, and education.">
 <style>
 :root {
   --bg: #0d1117;
@@ -481,8 +481,8 @@ footer {
   <section class="hero">
     <h1>I'm Jeff. I do math<br>and make things with it.</h1>
     <p class="tagline">
-      Math + CS at <span class="highlight">KREA University</span>, concurrent data science at <span class="highlight">IIT Madras</span>.
-      I build computational tools for combinatorics, sports analytics, and education.
+      Math + CS at <span class="highlight">KREA University</span>, formerly <span class="highlight">Chennai Mathematical Institute</span>.
+      I build computational tools for combinatorics, formal verification, and education.
     </p>
     <div class="cta-row">
       <a href="#contact" class="btn btn-primary">Get in touch</a>
@@ -493,23 +493,23 @@ footer {
   <section id="about">
     <div class="section-title">About</div>
     <p>
-      Final-year student finishing a dual degree in Mathematics and Computer Science (KREA) alongside a BS in Data Science (IIT Madras). I work at the intersection of computation and pure math, with a preference for problems where you can verify conjectures by brute-forcing them on a cluster.
+      BSc (Hons.) Mathematics and Computer Science at KREA University, previously at Chennai Mathematical Institute. I work at the intersection of computation and pure math, with a preference for problems where you can verify conjectures by brute-forcing them on a cluster.
     </p>
     <p>
-      My current research uses SAT solvers and symbolic regression to push bounds in Ramsey theory. On the applied side, I build computer vision pipelines for esports analytics. I write about all of it on Substack.
+      Currently doing formal verification consulting, teaching math to 100+ middle schoolers, and tutoring olympiad students (IMO/INMO qualifiers). Research spans SAT-based Ramsey theory, topological anti-cheat methods, and ML for open conjectures. I write about all of it on Substack.
     </p>
     <div class="stat-row">
       <div class="stat">
-        <span class="stat-value">2</span>
-        <span class="stat-label">concurrent degrees</span>
+        <span class="stat-value">CMI + KREA</span>
+        <span class="stat-label">math & cs</span>
       </div>
       <div class="stat">
-        <span class="stat-value">SAT + ML</span>
-        <span class="stat-label">research tools</span>
+        <span class="stat-value">Lean + SAT</span>
+        <span class="stat-label">formal + computational</span>
       </div>
       <div class="stat">
-        <span class="stat-value">VCT</span>
-        <span class="stat-label">esports analytics</span>
+        <span class="stat-value">IMO</span>
+        <span class="stat-label">students qualified</span>
       </div>
     </div>
   </section>
@@ -531,27 +531,40 @@ footer {
     </div>
 
     <div class="research-item">
-      <h3>Sports-Analytics Computer Vision</h3>
+      <h3>Topological Anti-Cheat for FPS Games</h3>
       <p>
-        Building CV pipelines for competitive VALORANT (VCT NA Challengers). YOLO-based player detection with custom CNNs for scoreboard/map recognition. Active work on map disambiguation (Pearl/Split confusion) and dead-state classification.
+        Developed a topological method to identify likely cheaters in online FPS games by modeling player crosshair position on 2-spheres, fitting von Mises-Fisher distributions, and clustering anomalies with HDBSCAN.
       </p>
       <div>
-        <span class="research-tag">YOLO</span>
-        <span class="research-tag">CNN</span>
-        <span class="research-tag">esports</span>
-        <span class="research-tag">computer vision</span>
+        <span class="research-tag">topology</span>
+        <span class="research-tag">HDBSCAN</span>
+        <span class="research-tag">von Mises-Fisher</span>
+        <span class="research-tag">anti-cheat</span>
       </div>
     </div>
 
     <div class="research-item">
-      <h3>Domain-Specific Languages for Mathematics</h3>
+      <h3>ML for Collatz Conjecture Bounds</h3>
       <p>
-        Exploring formal and semi-formal languages for expressing mathematical constructions in ways that bridge human intuition and machine verification. First writeup in progress.
+        Training a neural network to predict Collatz stopping times from binary representations. Exploring whether learned structure in stopping times can tighten known bounds on the conjecture.
       </p>
       <div>
-        <span class="research-tag">formal methods</span>
-        <span class="research-tag">DSLs</span>
-        <span class="research-tag">mathematical notation</span>
+        <span class="research-tag">neural networks</span>
+        <span class="research-tag">number theory</span>
+        <span class="research-tag">Collatz</span>
+      </div>
+    </div>
+
+    <div class="research-item">
+      <h3>Formal Verification in Lean and Isabelle</h3>
+      <p>
+        Self-taught dependent type theory by automating proofs of olympiad-style number theory problems. Worked on formalizing the Erdos-Szekeres conjecture under a professor.
+      </p>
+      <div>
+        <span class="research-tag">Lean</span>
+        <span class="research-tag">Isabelle</span>
+        <span class="research-tag">proof automation</span>
+        <span class="research-tag">dependent types</span>
       </div>
     </div>
   </section>
@@ -615,48 +628,109 @@ footer {
       <div class="cv-entry">
         <div class="cv-entry-header">
           <span class="cv-entry-title">KREA University</span>
-          <span class="cv-entry-date">2022 - 2026</span>
+          <span class="cv-entry-date">Aug 2024 - Present</span>
         </div>
-        <div class="cv-entry-sub">B.S. Mathematics and Computer Science</div>
+        <div class="cv-entry-sub">BSc (Hons.) Mathematics and Computer Science</div>
+        <div class="cv-entry-detail">Tada, India</div>
       </div>
       <div class="cv-entry">
         <div class="cv-entry-header">
-          <span class="cv-entry-title">IIT Madras (Online)</span>
-          <span class="cv-entry-date">Concurrent</span>
+          <span class="cv-entry-title">Chennai Mathematical Institute</span>
+          <span class="cv-entry-date">Aug 2022 - Jul 2024</span>
         </div>
-        <div class="cv-entry-sub">B.S. Data Science</div>
+        <div class="cv-entry-sub">BSc (Hons.) Mathematics and Computer Science</div>
+        <div class="cv-entry-detail">Chennai, India</div>
       </div>
     </div>
 
     <div class="cv-section">
-      <h3>Research</h3>
+      <h3>Work Experience</h3>
       <div class="cv-entry">
-        <div class="cv-entry-title">Computational Ramsey Theory</div>
-        <div class="cv-entry-detail">SAT-based computation of 2-color Rado numbers. Verified Ahmed-Zaman-Bright 2.1. Discovered R<sub>2</sub>(ax+by=az) = a<sup>2</sup> conjecture.</div>
+        <div class="cv-entry-header">
+          <span class="cv-entry-title">Formal Verification Consultant</span>
+          <span class="cv-entry-date">May 2026 - Present</span>
+        </div>
+        <div class="cv-entry-sub">Lending Labs / Kuliza</div>
+        <div class="cv-entry-detail">Proving invariant properties for loan-origination software and reducing test cases when constructing new business rules.</div>
       </div>
       <div class="cv-entry">
-        <div class="cv-entry-title">Domain-Specific Languages for Mathematics</div>
-        <div class="cv-entry-detail">First writeup for advisor Anand. Exploring formal representations bridging human and machine reasoning.</div>
+        <div class="cv-entry-header">
+          <span class="cv-entry-title">Faculty of Mathematics</span>
+          <span class="cv-entry-date">Sep 2024 - Present</span>
+        </div>
+        <div class="cv-entry-sub">Math Circle Chennai</div>
+        <div class="cv-entry-detail">Designed curricula to teach cryptography, modular arithmetic, and Markov chains to 100+ middle school students.</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <span class="cv-entry-title">Mathematics Tutor</span>
+          <span class="cv-entry-date">Oct 2023 - Present</span>
+        </div>
+        <div class="cv-entry-sub">Independent, Online</div>
+        <div class="cv-entry-detail">Students qualified to IMO, INMO/IMOTC, and EGMO.</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <span class="cv-entry-title">Signal Encoding &amp; Antenna Design</span>
+          <span class="cv-entry-date">Mar 2023 - Aug 2024</span>
+        </div>
+        <div class="cv-entry-sub">VDesign Technologies, Puducherry</div>
+        <div class="cv-entry-detail">Optimized encoding algorithms, implemented Viterbi decoding (40% noise reduction). Beam-steering Ku-band patch antenna for UAVs.</div>
       </div>
     </div>
 
     <div class="cv-section">
-      <h3>Projects</h3>
+      <h3>Internships</h3>
       <div class="cv-entry">
-        <div class="cv-entry-title">ValScout v2</div>
-        <div class="cv-entry-detail">CV pipeline for esports analytics. YOLO player detection, custom CNN for scoreboards/maps.</div>
+        <div class="cv-entry-header">
+          <span class="cv-entry-title">Data Analytics Intern</span>
+          <span class="cv-entry-date">2024</span>
+        </div>
+        <div class="cv-entry-sub">Riverbridge Investment Advisors, Chennai</div>
+        <div class="cv-entry-detail">Automated data analytics pipelines. Analyzed financial data and business valuations for a private equity firm.</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <span class="cv-entry-title">Teaching Assistant</span>
+          <span class="cv-entry-date">2023</span>
+        </div>
+        <div class="cv-entry-sub">Epsilon India Summer Camp, Chennai</div>
+        <div class="cv-entry-detail">Non-Euclidean geometry, finite automata, Diophantine equations. Delivered lecture on proof writing.</div>
       </div>
     </div>
 
     <div class="cv-section">
-      <h3>Skills</h3>
+      <h3>Awards</h3>
       <div class="cv-entry">
-        <div class="cv-entry-detail">Python, C++, JavaScript, R. PyTorch, YOLO, SAT solvers (Kissat, march_cu). PySR, scikit-learn, pandas. Git, Linux, AWS Lambda.</div>
+        <div class="cv-entry-header">
+          <span class="cv-entry-title">JEE Mains: Math 99.8th percentile, Overall 96.47th</span>
+          <span class="cv-entry-date">2022</span>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <span class="cv-entry-title">SAT: 800 Math, 730 English</span>
+          <span class="cv-entry-date">2021</span>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-entry-header">
+          <span class="cv-entry-title">National Robo-Soccer Champion &amp; Overall Team Winner</span>
+          <span class="cv-entry-date">2018</span>
+        </div>
+        <div class="cv-entry-detail">SP Robotics Works (SPARC)</div>
+      </div>
+    </div>
+
+    <div class="cv-section">
+      <h3>Technical Skills</h3>
+      <div class="cv-entry">
+        <div class="cv-entry-detail">Python, Haskell, R, SQL, Arduino. PyTorch/TensorFlow, scikit-learn, Reinforcement Learning. Lean, Isabelle. pandas, NumPy, matplotlib.</div>
       </div>
     </div>
 
     <div class="cv-download">
-      <a href="#" class="btn btn-secondary" id="cv-pdf" onclick="alert('PDF coming soon'); return false;">Download PDF</a>
+      <a href="Hurudaya_CV.pdf" class="btn btn-secondary" download>Download PDF</a>
     </div>
   </section>
 
@@ -664,8 +738,8 @@ footer {
     <div class="section-title">Contact</div>
     <p>Best way to reach me is email. Also around on GitHub and Substack.</p>
     <div class="contact-links">
-      <a href="mailto:areoform@protonmail.com" class="contact-link">
-        <span class="contact-icon">&#9993;</span> areoform@protonmail.com
+      <a href="mailto:jeffdoesmath@gmail.com" class="contact-link">
+        <span class="contact-icon">&#9993;</span> jeffdoesmath@gmail.com
       </a>
       <a href="https://github.com/hurudaya" target="_blank" rel="noopener" class="contact-link">
         <span class="contact-icon">&#10100;</span> github/hurudaya
