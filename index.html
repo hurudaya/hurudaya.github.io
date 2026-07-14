@@ -1,15 +1,553 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url=https://jeffdoesmath.com">
-<title>Redirecting...</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeff Narasimhan - Mathematics and Computer Science</title>
+<meta name="description" content="Jeff Narasimhan - Mathematics and Computer Science student at KREA University. Research in computational Ramsey theory, formal verification, and machine learning.">
+<meta property="og:title" content="Jeff Narasimhan - Mathematics and Computer Science">
+<meta property="og:description" content="Mathematics and Computer Science. KREA University, formerly Chennai Mathematical Institute.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hurudaya.github.io">
+<meta property="og:site_name" content="Jeff Narasimhan">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jeff Narasimhan - Mathematics and Computer Science">
+<meta name="twitter:description" content="Mathematics and Computer Science. KREA University, formerly Chennai Mathematical Institute.">
 <style>
-  body { background: #0d1117; color: #c9d1d9; font-family: monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-  a { color: #58a6ff; }
+:root {
+  --bg: #0d1117; --surface: #161b22; --border: #21262d;
+  --text: #c9d1d9; --muted: #484f58; --bright: #f0f6fc;
+  --blue: #58a6ff; --green: #3fb950; --yellow: #d29922;
+  --accent: #58a6ff;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --mono: 'SF Mono', 'Fira Code', Consolas, monospace;
+}
+[data-theme="light"] {
+  --bg: #ffffff; --surface: #f6f8fa; --border: #d0d7de;
+  --text: #1f2328; --muted: #656d76; --bright: #1f2328;
+  --blue: #0969da; --accent: #0969da;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ---- NAV ---- */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--bg); border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+}
+.nav-inner {
+  max-width: 960px; margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-brand {
+  font-family: var(--mono); font-weight: 700; font-size: 1.1rem;
+  color: var(--bright); text-decoration: none;
+}
+.nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+.nav-links a {
+  color: var(--muted); text-decoration: none; font-size: 0.9rem;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+.theme-toggle {
+  background: none; border: 1px solid var(--border); border-radius: 6px;
+  color: var(--text); cursor: pointer; padding: 6px 10px; font-size: 1rem;
+  transition: border-color 0.2s;
+}
+.theme-toggle:hover { border-color: var(--accent); }
+.hamburger {
+  display: none; background: none; border: none; color: var(--text);
+  cursor: pointer; font-size: 1.5rem; padding: 4px;
+}
+.mobile-menu {
+  display: none; position: fixed; top: 64px; left: 0; right: 0;
+  background: var(--bg); border-bottom: 1px solid var(--border);
+  padding: 16px 24px; z-index: 99;
+}
+.mobile-menu.active { display: block; }
+.mobile-menu a {
+  display: block; padding: 12px 0; color: var(--text); text-decoration: none;
+  border-bottom: 1px solid var(--border); font-size: 1rem;
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: var(--accent); }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: block; }
+}
+
+/* ---- SECTIONS ---- */
+.container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+section { padding: 80px 0; }
+section:first-of-type { padding-top: 120px; }
+
+.section-label {
+  font-family: var(--mono); font-size: 0.75rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 2px; color: var(--accent);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: 1.75rem; font-weight: 700; color: var(--bright);
+  margin-bottom: 40px;
+}
+
+/* ---- HERO ---- */
+.hero { padding-top: 160px; padding-bottom: 80px; text-align: center; }
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700;
+  color: var(--bright); margin-bottom: 16px; letter-spacing: -0.5px;
+}
+.hero .tagline {
+  font-size: clamp(1rem, 2.5vw, 1.2rem); color: var(--muted);
+  max-width: 600px; margin: 0 auto 40px;
+}
+.hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 8px; font-size: 0.95rem;
+  text-decoration: none; font-weight: 500; transition: all 0.2s;
+  cursor: pointer;
+}
+.btn-primary {
+  background: var(--accent); color: #fff; border: 1px solid var(--accent);
+}
+.btn-primary:hover { opacity: 0.85; }
+.btn-secondary {
+  background: transparent; color: var(--text); border: 1px solid var(--border);
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ---- CARDS ---- */
+.card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 24px; margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: var(--accent); }
+.card-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  flex-wrap: wrap; gap: 8px; margin-bottom: 8px;
+}
+.card-title { font-weight: 600; color: var(--bright); font-size: 1.05rem; }
+.card-meta {
+  font-family: var(--mono); font-size: 0.8rem; color: var(--muted);
+  white-space: nowrap;
+}
+.card-subtitle { font-size: 0.9rem; color: var(--accent); margin-bottom: 8px; }
+.card-location {
+  font-size: 0.85rem; color: var(--muted); margin-bottom: 8px;
+  font-family: var(--mono);
+}
+.card-body { font-size: 0.92rem; color: var(--text); line-height: 1.65; }
+
+/* ---- SKILLS ---- */
+.skills-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.skill-group h3 {
+  font-family: var(--mono); font-size: 0.8rem; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-tag {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 4px 12px; border-radius: 16px; font-size: 0.85rem;
+  color: var(--text); font-family: var(--mono);
+}
+
+/* ---- AWARDS ---- */
+.award-item {
+  display: flex; align-items: baseline; gap: 12px;
+  padding: 12px 0; border-bottom: 1px solid var(--border);
+}
+.award-item:last-child { border-bottom: none; }
+.award-year {
+  font-family: var(--mono); font-size: 0.8rem; color: var(--muted);
+  min-width: 50px; flex-shrink: 0;
+}
+.award-text { font-size: 0.95rem; color: var(--text); }
+.award-highlight { color: var(--accent); font-weight: 600; }
+
+/* ---- CONTACT ---- */
+.contact-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+.contact-item {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 16px 20px; text-decoration: none;
+  color: var(--text); transition: border-color 0.2s;
+}
+.contact-item:hover { border-color: var(--accent); color: var(--accent); }
+.contact-icon { font-size: 1.2rem; flex-shrink: 0; }
+.contact-label {
+  font-family: var(--mono); font-size: 0.75rem; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 1px;
+}
+.contact-value { font-size: 0.95rem; }
+
+/* ---- FOOTER ---- */
+footer {
+  border-top: 1px solid var(--border); padding: 40px 0;
+  text-align: center; font-size: 0.85rem; color: var(--muted);
+}
+
+/* ---- DIVIDER ---- */
+.divider {
+  border: none; border-top: 1px solid var(--border); margin: 0;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 600px) {
+  .card-header { flex-direction: column; }
+  section { padding: 60px 0; }
+  .hero { padding-top: 120px; }
+}
 </style>
 </head>
 <body>
-<p>Redirecting to <a href="https://jeffdoesmath.com">jeffdoesmath.com</a></p>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">Jeff Narasimhan</a>
+    <ul class="nav-links">
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">&#9789;</button></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#education" onclick="closeMenu()">Education</a>
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#research" onclick="closeMenu()">Research</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#awards" onclick="closeMenu()">Awards</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="#" onclick="toggleTheme(); closeMenu()">Toggle Theme</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container">
+    <h1>Jeff Narasimhan</h1>
+    <p class="tagline">Mathematics and Computer Science. KREA University, formerly Chennai Mathematical Institute.</p>
+    <div class="hero-buttons">
+      <a href="Hurudaya_CV.pdf" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 2v9M4 8l4 4 4-4M2 14h12"/></svg>
+        Download CV
+      </a>
+      <a href="#contact" class="btn btn-secondary">Contact</a>
+    </div>
+  </div>
+</section>
+
+<div class="container"><hr class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <p class="section-label">01 / Education</p>
+    <h2 class="section-title">Education</h2>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">KREA University</span>
+        <span class="card-meta">Aug 2024 - Present</span>
+      </div>
+      <p class="card-subtitle">BSc (Hons.) Mathematics and Computer Science</p>
+      <p class="card-location">Tada, India</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Chennai Mathematical Institute</span>
+        <span class="card-meta">Aug 2022 - Jul 2024</span>
+      </div>
+      <p class="card-subtitle">BSc (Hons.) Mathematics and Computer Science</p>
+      <p class="card-location">Chennai, India</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label">02 / Experience</p>
+    <h2 class="section-title">Experience</h2>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Formal Verification Consultant</span>
+        <span class="card-meta">May 2026 - Present</span>
+      </div>
+      <p class="card-subtitle">Lending Labs / Kuliza</p>
+      <p class="card-body">Proving invariant properties for loan-origination software and reducing test cases when constructing new business rules.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Faculty of Mathematics</span>
+        <span class="card-meta">Sep 2024 - Present</span>
+      </div>
+      <p class="card-subtitle">Math Circle Chennai</p>
+      <p class="card-body">Designed curricula to teach cryptography, modular arithmetic, and Markov chains to 100+ middle school students.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Mathematics Tutor</span>
+        <span class="card-meta">Oct 2023 - Present</span>
+      </div>
+      <p class="card-subtitle">Independent / Online</p>
+      <p class="card-body">Students qualified to IMO, INMO/IMOTC, and EGMO.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Signal Encoding &amp; Antenna Design</span>
+        <span class="card-meta">Mar 2023 - Aug 2024</span>
+      </div>
+      <p class="card-subtitle">VDesign Technologies, Puducherry</p>
+      <p class="card-body">Optimized encoding algorithms, implemented Viterbi decoding (40% noise reduction). Beam-steering Ku-band patch antenna for UAVs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNSHIPS -->
+<section id="internships">
+  <div class="container">
+    <p class="section-label">03 / Internships</p>
+    <h2 class="section-title">Internships</h2>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Data Analytics Intern</span>
+        <span class="card-meta">2024</span>
+      </div>
+      <p class="card-subtitle">Riverbridge Investment Advisors, Chennai</p>
+      <p class="card-body">Automated data analytics pipelines. Analyzed financial data and business valuations for a private equity firm.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Teaching Assistant</span>
+        <span class="card-meta">2023</span>
+      </div>
+      <p class="card-subtitle">Epsilon India Summer Camp, Chennai</p>
+      <p class="card-body">Non-Euclidean geometry, finite automata, Diophantine equations. Delivered lecture on proof writing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="container">
+    <p class="section-label">04 / Research</p>
+    <h2 class="section-title">Research</h2>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Computational Ramsey Theory</span>
+      </div>
+      <p class="card-body">SAT solving (Kissat + march_cu) for 2-color Rado numbers. Verified Ahmed-Zaman-Bright conjecture 2.1. Discovered R<sub>2</sub>(ax+by=az) = a<sup>2</sup>. PySR symbolic regression for conjecture generation.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Topological Anti-Cheat for FPS Games</span>
+      </div>
+      <p class="card-body">Von Mises-Fisher distributions on 2-spheres for modeling aim behavior. HDBSCAN clustering for anomaly detection.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">ML for Collatz Conjecture Bounds</span>
+      </div>
+      <p class="card-body">Neural network for predicting stopping times from binary representations of integers.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Formal Verification in Lean and Isabelle</span>
+      </div>
+      <p class="card-body">Proof automation and formalizing the Erdos-Szekeres conjecture under a professor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">05 / Skills</p>
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Haskell</span>
+          <span class="skill-tag">R</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">Arduino</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>ML / Data</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">scikit-learn</span>
+          <span class="skill-tag">RL</span>
+          <span class="skill-tag">pandas</span>
+          <span class="skill-tag">NumPy</span>
+          <span class="skill-tag">matplotlib</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Formal Methods</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Lean</span>
+          <span class="skill-tag">Isabelle</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="container">
+    <p class="section-label">06 / Awards</p>
+    <h2 class="section-title">Awards</h2>
+
+    <div class="card" style="padding: 16px 24px;">
+      <div class="award-item">
+        <span class="award-year">2022</span>
+        <span class="award-text"><span class="award-highlight">JEE Mains</span> - Math 99.8th percentile, Overall 96.47th percentile</span>
+      </div>
+      <div class="award-item">
+        <span class="award-year">2021</span>
+        <span class="award-text"><span class="award-highlight">SAT</span> - 800 Math, 730 English</span>
+      </div>
+      <div class="award-item">
+        <span class="award-year">2018</span>
+        <span class="award-text"><span class="award-highlight">SPARC</span> - National Robo-Soccer Champion &amp; Overall Team Winner</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">07 / Contact</p>
+    <h2 class="section-title">Contact</h2>
+
+    <div class="contact-grid">
+      <a href="mailto:areoform@protonmail.com" class="contact-item">
+        <span class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="M2 4l8 6 8-6"/></svg>
+        </span>
+        <span>
+          <span class="contact-label">Email</span><br>
+          <span class="contact-value">areoform@protonmail.com</span>
+        </span>
+      </a>
+
+      <a href="https://github.com/hurudaya" target="_blank" rel="noopener" class="contact-item">
+        <span class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5a8.5 8.5 0 00-2.69 16.56c.43.08.58-.18.58-.41v-1.44c-2.37.52-2.87-1.14-2.87-1.14a2.26 2.26 0 00-.95-1.25c-.77-.53.06-.52.06-.52a1.8 1.8 0 011.31.88 1.82 1.82 0 002.49.71 1.82 1.82 0 01.54-1.14c-1.89-.21-3.88-.95-3.88-4.22a3.3 3.3 0 01.88-2.29 3.07 3.07 0 01.08-2.26s.72-.23 2.35.88a8.1 8.1 0 014.28 0c1.63-1.1 2.35-.88 2.35-.88a3.07 3.07 0 01.08 2.26 3.3 3.3 0 01.88 2.29c0 3.28-2 4-3.9 4.22a2.04 2.04 0 01.58 1.58v2.35c0 .23.15.49.58.41A8.5 8.5 0 0010 1.5z"/></svg>
+        </span>
+        <span>
+          <span class="contact-label">GitHub</span><br>
+          <span class="contact-value">github.com/hurudaya</span>
+        </span>
+      </a>
+
+      <a href="Hurudaya_CV.pdf" class="contact-item">
+        <span class="contact-icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H5a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7z"/><polyline points="12 2 12 7 17 7"/></svg>
+        </span>
+        <span>
+          <span class="contact-label">CV</span><br>
+          <span class="contact-value">Download PDF</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>Jeff Narasimhan &middot; <span id="footerYear"></span></p>
+  </div>
+</footer>
+
+<script>
+(function() {
+  document.getElementById('footerYear').textContent = new Date().getFullYear()
+
+  var saved = localStorage.getItem('theme')
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved)
+  }
+  updateToggleIcon()
+
+  window.toggleTheme = function() {
+    var current = document.documentElement.getAttribute('data-theme')
+    var next = current === 'light' ? 'dark' : 'light'
+    document.documentElement.setAttribute('data-theme', next)
+    localStorage.setItem('theme', next)
+    updateToggleIcon()
+  }
+
+  function updateToggleIcon() {
+    var btn = document.querySelector('.theme-toggle')
+    if (!btn) return
+    var theme = document.documentElement.getAttribute('data-theme')
+    btn.innerHTML = theme === 'light' ? '&#9728;' : '&#9789;'
+  }
+
+  window.toggleMenu = function() {
+    document.getElementById('mobileMenu').classList.toggle('active')
+  }
+
+  window.closeMenu = function() {
+    document.getElementById('mobileMenu').classList.remove('active')
+  }
+
+  document.addEventListener('click', function(e) {
+    var menu = document.getElementById('mobileMenu')
+    var hamburger = document.querySelector('.hamburger')
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+      menu.classList.remove('active')
+    }
+  })
+})()
+</script>
+
 </body>
 </html>
